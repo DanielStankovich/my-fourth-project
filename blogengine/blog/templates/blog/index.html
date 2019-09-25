@@ -1,0 +1,73 @@
+{% extends 'blog/base_blog.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="http://localhost:8000/blog/category/(phone/)">
+                <img src="https://wi-images.condecdn.net/image/PE3rWzMOmyW/crop/1620/f/asdsadasd.jpg" width="1100" height="500" class="d-block w-100" alt="">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="http://localhost:8000/blog/category/(gatget/)">
+                <img src="https://amp.businessinsider.com/images/5bb7d3979fb84c673c033016-750-375.jpg" width="1100" height="500" class="d-block w-100" alt="...">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="http://localhost:8000/blog/category/(laptop/)">
+                <img src="https://heavyeditorial.files.wordpress.com/2019/07/5-most-expensive-gaming-laptops-of-your-dreams-2019.jpg?quality=65&strip=all" width="1100" height="500" class="d-block w-100" alt="...">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="http://localhost:8000/blog/category/(tablet/)">
+                <img src="https://www.lenovo.com/medias/lenovo-tablet-m10-hero-1-.png?context=bWFzdGVyfHJvb3R8NjI0MTF8aW1hZ2UvcG5nfGgyMi9oMmIvOTk4ODM0NjQ0NTg1NC5wbmd8MDYxMDlmYTE0M2YxZDMyM2VjYTUyMThjNDQwM2VlNzgyYTQ5ZTM0OTVlZmM4OWI3OTc0ZjA1NjI4YjYwNTQxZQ" width="1100" height="500" class="d-block w-100" alt="...">
+            </a>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>
+
+
+
+<div id="container" style="position: relative;">
+    <div class="btn-group-vertical" style="z-index: 1;">
+        {% for category in categories %}
+        <a href="{{ category.get_absolute_url }}">
+            
+            <button type="button" class="btn btn-secondary">{{ category.category_title }}</button>
+        </a>
+        {% endfor %}
+
+    </div>
+    
+        <div class="card-columns" style="position: absolute; top: 0;
+            right: 0; left: 0;">
+            {% for post in page_object.object_list %}
+            <div class="card">
+                <a href="{% url 'post_detail_url' post.slug %}">
+                    <img src="{{ post.image.url }}" Height="250" Width="25" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.body }}</p>
+                </div>
+                
+            </div>
+
+            {% endfor %}
+        </div>
+    
+</div>
+
+    {% endblock %}
+

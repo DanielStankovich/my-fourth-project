@@ -1,0 +1,21 @@
+﻿{% extends 'blog/base_blog.html' %}
+
+
+
+{% block content %}
+
+<div class="col-sm-12">
+    <h2>{{ category.category_title }}</h2>
+    <hr />
+    {% for post in products_of_category %}
+    <div class="col-sm-4">
+        <img src="{{ post.image.url }}" style="width:100%; height: 300px;" />
+        <h4 class="text-center">{{ post.title }}</h4>
+        <p class="text-center" style="font-size: 25px;">Price: </p>
+        <p class="text-center"><a href="{% url 'add_to_cart' product_slug=post.slug %}"><button class="btn btn-danger">Add to Shopping Cart</button></a></p>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

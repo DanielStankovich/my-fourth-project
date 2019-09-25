@@ -1,0 +1,16 @@
+﻿{% extends "base_account.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+<h1>Log-in</h1>
+<p>Please, use the following form to log-in:</p>
+
+<form action="." method="post">
+    <div class="form-group">
+        {{ form.as_p }}
+        {% csrf_token %}
+
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Log-in</button>
+</form>
+{% endblock %}
